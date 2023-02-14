@@ -8,7 +8,10 @@ router.get('/', (req, res) => {
         cuisines: 'Sushi, Japanese Food, Buffet/AYCE',
         pic: '/images/smallSushiDinner.jpg',
         id: 'sushi-dinner',
-        credit: 'Photo by <a href="https://unsplash.com/de/@metzograf?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Florian Metzner</a> on <a href="https://unsplash.com/photos/12IsagncQ7o?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>'
+        credit: "https://unsplash.com/de/@metzograf?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText",
+        source: "https://unsplash.com/photos/12IsagncQ7o?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText",
+        creditName: 'Florian Metzner',
+        sourceName: 'Unsplash'
     }, {
         name: 'Black Tap',
         city: 'Las Vegas',
@@ -16,7 +19,10 @@ router.get('/', (req, res) => {
         cuisines: 'American, Burgers, Shakes',
         pic: '/images/smallIcecream.jpg',
         id: 'icecream-shake',
-        credit: 'Photo by <a href="https://unsplash.com/@m_usm04?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Muhammad Usman</a> on <a href="https://unsplash.com/photos/OSpvTwWvjmU?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>'
+        credit: "https://unsplash.com/@m_usm04?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText",
+        source: "https://unsplash.com/photos/OSpvTwWvjmU?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText",
+        creditName: 'Muhammad Usman',
+        sourceName: 'Unsplash'
   
     }]
     res.render('places/index', { places })
