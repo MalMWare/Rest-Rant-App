@@ -8,12 +8,12 @@ h1 {
     width: 800px;
 }
 
-#sushi-dinner {
+.sushi-dinner {
     width: 400px;
     height: 300px;
 }
 
-#icecream-shake {
+.icecream-shake {
     height: 500px;
     width: 400px;
 }

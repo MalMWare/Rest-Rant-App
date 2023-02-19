@@ -14,7 +14,7 @@ function index (data) {
             {place.cuisines}
           </p>
           <div className='imgContainer'>
-            <img src={place.pic} alt={place.name} id={place.id}/>
+            <img src={place.pic} alt={place.name} class={place.class}/>
             <p>Photo by <a href={place.credit}></a> {place.creditName} on <a href={place.source}></a> {place.sourceName}</p>
           </div>  
           <p className="text-center">

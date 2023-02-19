@@ -1,6 +1,9 @@
 const router = require('express').Router()
 const places = require("../models/places.js")
 
+router.get('/', (req, res) => {
+    res.render('places/index', { places })
+})
 
 //create
 router.post('/', (req, res) => {
@@ -17,16 +20,13 @@ router.post('/', (req, res) => {
     res.redirect('/places')
 })
 
-
-router.get('/', (req, res) => {
-    res.render('places/index', { places })
-})
-
 //new
 router.get('/new', (req, res) => {
     res.render('places/new')
 })
 
+
+//show
 router.get('/:id', (req, res) => {
     let id = Number(req.params.id)
     if (isNaN(id)) {
@@ -36,10 +36,12 @@ router.get('/:id', (req, res) => {
       res.render('error404')
     }
     else {
-      res.render('places/show', { place: places[id], id })
+      res.render('places/show', { place: places[id], id: req.params.id})
     }
 })
 
+
+//delete
 router.delete("/:id", (req, res) => {
     let id = Number(req.params.id)
     if (isNaN(id)) {
@@ -54,7 +56,50 @@ router.delete("/:id", (req, res) => {
         res.redirect('/places')
     }
 })
+
+//put
+router.put('/:id', (req, res) => {
+    let id = Number(req.params.id)
+    if (isNaN(id)) {
+        res.render('error404')
+    }
+    else if (!places[id]) {
+        res.render('error404')
+    }
+    else {
+        if (!reqbody.pic) {
+            req.body.pic = 'http://placekitten.com/400/400'
+        }
+        if (!req.body.city) {
+            req.body.city = 'Anytown'
+        }
+        if (!req.body.state) {
+            req.body.state = 'USA'
+        }
+        places[id] =req.body
+        res.redirect(`/places/${id}`)
+    }
+})
+
+//edit
+// router.get('/:id/edit', (req, res) => {
+//     let id = Number(req.params.id)
+//     if (isNaN(id)) {
+//         res.render('error404')
+//     }
+//     else if (!places[id]) {
+//         res.render('error404')
+//     }
+//     else {
+//         res.redirect('places/edit', { place: places[id] })
+//     }
+// })
   
+
+// EDIT
+router.get('/:id/edit', (req, res) => {
+    res.render('places/edit', { place: places[req.params.id], id: req.params.id })
+})
 // router.get('/:id', (req, res) => {
 //     (places[req.params.id])
 //       ? res.render('places/show', { place: places[req.params.id], id: req.params.id })
