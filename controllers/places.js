@@ -67,7 +67,7 @@ router.put('/:id', (req, res) => {
         res.render('error404')
     }
     else {
-        if (!reqbody.pic) {
+        if (!req.body.pic) {
             req.body.pic = 'http://placekitten.com/400/400'
         }
         if (!req.body.city) {
