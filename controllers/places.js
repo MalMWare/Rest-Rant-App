@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const places = require("../models/places.js")
 const db = require('../models')
+const { findById } = require('../models/places.js')
 
 router.get('/', (req, res) => {
     db.Place.find()
@@ -29,7 +30,14 @@ router.get('/new', (req, res) => {
 })
 
 router.get('/:id', (req, res) => {
-  res.send('GET /places/:id stub')
+  db.Place.findById(req.params.id)
+  .then(place => {
+    res.render('places/show', { place })
+  })
+  .catch(err => {
+    console.log('err', err)
+    res.render('error404')
+  })
 })
 
 router.put('/:id', (req, res) => {
