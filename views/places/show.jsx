@@ -17,10 +17,10 @@ function show ({place, id}) {
                 <h3>Description</h3>
                 <p>{ place.city }</p>
                 <footer>Comments</footer>
-                <a href={`/places/${id}/edit`} className="btn btn-warning">
+                <a href={`/places/${place.id}/edit`} className="btn btn-warning">
                     Edit
                 </a>
-                <form method="POST" action={`/places/${id}?_method=DELETE`}>
+                <form method="POST" action={`/places/${place.id}?_method=DELETE`}>
                     <button type="submit" className="btn btn-danger">
                         Delete
                     </button>

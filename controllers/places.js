@@ -45,7 +45,10 @@ router.put('/:id', (req, res) => {
 })
 
 router.delete('/:id', (req, res) => {
-  res.send('DELETE /places/:id stub')
+  db.Place.findByIdAndDelete(req.params.id)
+  .then(deletedPlace => {
+    res.status(303).redirect('/places')
+  })
 })
 
 router.get('/:id/edit', (req, res) => {
