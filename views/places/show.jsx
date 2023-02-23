@@ -15,7 +15,9 @@ function show ({place, id}) {
                 <h3>Rating</h3>
                 <p>Not Rated</p>
                 <h3>Description</h3>
-                <p>{ place.city }</p>
+                <p>{ place.city }, { place.state }</p>
+                <p>{ place.showEstablished() }</p>
+                <p>Serving { place.cuisines }</p>
                 <footer>Comments</footer>
                 <a href={`/places/${place.id}/edit`} className="btn btn-warning">
                     Edit
