@@ -1,12 +1,12 @@
 const React = require('react')
 const Def = require('../default')
 
-function Edit ({place, id}) {
+function Edit ({place}) {
     return (
         <Def>
             <main>
                 <h1>Edit Restaurant!</h1>
-                <form method="POST" action={`/places/${id}?_method=PUT`}>
+                <form method="POST" action={`/places/${place.id}?_method=PUT`}>
                     <div className="form-group">
                         <label htmlFor="name">Name</label>
                         <input className="form-control" type='text' name="name" defaultValue={place.name}  />
@@ -27,7 +27,15 @@ function Edit ({place, id}) {
                         <label htmlFor="cuisines">Cuisines</label>
                         <input className="form-control" id="cuisines" name="cuisines" defaultValue={place.cuisines} required />
                     </div>
-                    <input className="btn btn-primary" type="submit"  />
+                    <div className="form-group">
+                        <label htmlFor="founded">Founded</label>
+                        <input className="form-control" 
+                            id="founded" 
+                            name="founded" 
+                            value={place.founded} 
+                        />
+                    </div>
+                    <input className="btn btn-primary" type="submit" value="Update Place"  />
                 </form>
             </main>
         </Def>
