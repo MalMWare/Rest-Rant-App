@@ -50,6 +50,23 @@ function show ({place, id}) {
             No comments yet!
         </h3>
     )
+    let rating = (
+        <h3 className="inactive">
+          Not yet rated
+        </h3>
+      )
+      if (place.comments.length) {
+        let sumRatings = place.comments.reduce((tot, c) => {
+          return tot + c.stars
+        }, 0)
+        let averageRating = sumRatings / place.comments.length
+        rating = (
+          <h3>
+            {Math.round(averageRating)} stars
+          </h3>
+        )
+      }
+      
     if (place.comments.length) {
         comments = place.comments.map(c => {
             return (
@@ -75,7 +92,7 @@ function show ({place, id}) {
                     <p>Photo by <a href={place.credit}></a> {place.creditName} on <a href={place.source}></a> {place.sourceName}</p>
                 </div> 
                 <h3>Rating</h3>
-                <p>Not Rated</p>
+                <p>{rating}</p>
                 <h3>Description</h3>
                 <p>{ place.city }, { place.state }</p>
                 <p>{ place.showEstablished() }</p>
